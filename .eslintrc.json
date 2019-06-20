@@ -1,0 +1,44 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "plugins": ["react", "react-hooks", "prettier"],
+  "extends": ["airbnb", "prettier"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "no-underscore-dangle": 0,
+    "react/require-default-props": "off",
+    "react/jsx-closing-bracket-location": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-closing-tag-location": 0,
+    "react/jsx-curly-spacing": 0,
+    "react/jsx-equals-spacing": 0,
+    "react/jsx-first-prop-new-line": 0,
+    "react/jsx-indent": 0,
+    "react/jsx-indent-props": 0,
+    "react/jsx-max-props-per-line": 0,
+    "react/jsx-tag-spacing": 0,
+    "react/jsx-wrap-multilines": 0,
+    "import/prefer-default-export": 0, // DON'T REMOVE AGAIN PLZ *cries*
+    "react/sort-comp": 0 // DON'T REMOVE AGAIN PLZ *cries again*
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "config/webpack.config.js"
+      }
+    }
+  }
+}

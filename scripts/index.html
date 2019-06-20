@@ -1,0 +1,13 @@
+<html>
+  <body>
+    <div id="root"></div>
+    <!-- import a JavaScript bundle -->
+
+    <% if (htmlWebpackPlugin.options.esmodules) { %>
+    <script
+      type="module"
+      src="/<%= htmlWebpackPlugin.options.esmodules %>"
+    ></script>
+    <% } %>
+  </body>
+</html>
