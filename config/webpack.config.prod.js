@@ -21,7 +21,7 @@ const bundles = TARGETS.map(target => {
       new webpack.HashedModuleIdsPlugin()
     ],
     output: {
-      filename: target.filename,
+      filename: target.output.filename,
     },
     module: {
       rules: [
@@ -31,7 +31,7 @@ const bundles = TARGETS.map(target => {
           use: [
             {
               loader: 'babel-loader',
-              options: target.options
+              options: target.babelrc
             }
           ],
         }
@@ -39,22 +39,22 @@ const bundles = TARGETS.map(target => {
     }
   };
 
-  if (target.html) {
+  if (target.output.html) {
     config.plugins.push(
       new HtmlWebpackPlugin({
-        filename: target.html,
+        filename: target.output.html,
         template: path.resolve(srcPath, 'index.html'),
         inject: 'body',
-        esmodules: target.esmodules
+        esmodules: target.output.esmodules
       })
     );
   }
 
-  if (target.esmodules) {
+  if (target.output.esmodules) {
     config.plugins.push(
       new ScriptExtHtmlWebpackPlugin({
         custom: {
-          test: target.filename,
+          test: target.output.filename,
           attribute: 'nomodule'
         }
       })

@@ -1,17 +1,21 @@
 module.exports = {
-  filename: 'index.esmodules.js',
-  options: {
+  output: {
+    filename: 'index.esmodules.js',
+  },
+  babelrc: {
     presets: [
       [
         '@babel/preset-env',
         {
           targets: {
-            esmodules: true
+            esmodules: true // supersedes browserlist
           },
           useBuiltIns: 'entry',
           corejs: 3,
-          modules: false,
-          shippedProposals: true
+          modules: false, // don't transpile esmodules syntax
+          spec: true,
+          shippedProposals: true,
+          ignoreBrowserslistConfig: true
         }
       ],
       '@babel/preset-react'
