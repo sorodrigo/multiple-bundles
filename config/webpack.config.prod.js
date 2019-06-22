@@ -21,6 +21,7 @@ const bundles = TARGETS.map(target => {
       new webpack.HashedModuleIdsPlugin()
     ],
     output: {
+      // generate the JS bundle with the target's output filename
       filename: target.output.filename,
     },
     module: {
@@ -31,6 +32,7 @@ const bundles = TARGETS.map(target => {
           use: [
             {
               loader: 'babel-loader',
+              // pass in the specific babel config for each target bundle
               options: target.babelrc
             }
           ],
@@ -39,17 +41,20 @@ const bundles = TARGETS.map(target => {
     }
   };
 
+  // generate an html file if the target bundle specifies a target html filename
   if (target.output.html) {
     config.plugins.push(
       new HtmlWebpackPlugin({
         filename: target.output.html,
         template: path.resolve(srcPath, 'index.html'),
         inject: 'body',
+        // template variable that adds the <script type="module" /> with the provided value
         esmodules: target.output.esmodules
       })
     );
   }
 
+  // add a nomodule attribute to the default JS script tag
   if (target.output.esmodules) {
     config.plugins.push(
       new ScriptExtHtmlWebpackPlugin({
