@@ -51,7 +51,7 @@
   "dependencies": {
     "browserslist-useragent": "^3.0.0",
     "core-js": "3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.11.1",
